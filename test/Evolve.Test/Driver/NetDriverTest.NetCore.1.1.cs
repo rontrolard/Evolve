@@ -49,6 +49,7 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
+        [Trait("Category", "Standalone")]
         [Fact(DisplayName = "CassandraDriver_NET_Core_1_1_works")]
         public void CassandraDriver_NET_Core_1_1_works()
         {

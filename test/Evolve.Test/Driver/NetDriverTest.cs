@@ -22,7 +22,7 @@ namespace Evolve.Test.Driver
             _cassandraFixture = cassandraFixture;
 
             if (!TestContext.Travis && !TestContext.AppVeyor)
-            { // AppVeyor and Windows 2016 does not support linux docker images
+            {
                 _mySqlfixture.Start();
                 _pgFixture.Start();
                 _sqlServerFixture.Start();
@@ -30,7 +30,7 @@ namespace Evolve.Test.Driver
             }
         }
 
-        [Fact(DisplayName = "Load_ConnectionType_from_an_already_loaded_assembly")]
+        [Fact]
         public void Load_ConnectionType_from_an_already_loaded_assembly()
         {
             var driver = new SystemDataSQLiteDriver();
@@ -40,7 +40,7 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
-        [Fact(DisplayName = "SqlClientDriver_works")]
+        [Fact]
         public void SqlClientDriver_works()
         {
             var driver = new SqlClientDriver();
@@ -50,14 +50,14 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
-        [Fact(DisplayName = "NpgsqlDriver_works")]
+        [Fact]
         public void NpgsqlDriver_works()
         {
             string originalCurrentDirectory = Directory.GetCurrentDirectory();
 
             try
             {
-                Directory.SetCurrentDirectory(TestContext.IntegrationTestPostgreSqlFolder);
+                Directory.SetCurrentDirectory(TestContext.IntegrationTestFolder);
                 var driver = new NpgsqlDriver();
                 var cnn = driver.CreateConnection(_pgFixture.CnxStr);
                 cnn.Open();
@@ -70,14 +70,14 @@ namespace Evolve.Test.Driver
             }
         }
 
-        [Fact(DisplayName = "MySqlDataDriver_works")]
+        [Fact]
         public void MySqlDataDriver_works()
         {
             string originalCurrentDirectory = Directory.GetCurrentDirectory();
 
             try
             {
-                Directory.SetCurrentDirectory(TestContext.IntegrationTestMySqlFolder);
+                Directory.SetCurrentDirectory(TestContext.IntegrationTestFolder);
                 var driver = new MySqlDataDriver();
                 var cnn = driver.CreateConnection(_mySqlfixture.CnxStr);
                 cnn.Open();
@@ -90,7 +90,27 @@ namespace Evolve.Test.Driver
             }
         }
 
-        [Fact(DisplayName = "CassandraDriver_works")]
+        [Fact]
+        public void MySqlConnectorDriver_works()
+        {
+            string originalCurrentDirectory = Directory.GetCurrentDirectory();
+
+            try
+            {
+                Directory.SetCurrentDirectory(TestContext.IntegrationTestFolder);
+                var driver = new MySqlConnectorDriver();
+                var cnn = driver.CreateConnection(_mySqlfixture.CnxStr);
+                cnn.Open();
+
+                Assert.True(cnn.State == ConnectionState.Open);
+            }
+            finally
+            {
+                Directory.SetCurrentDirectory(originalCurrentDirectory);
+            }
+        }
+
+        [Fact]
         public void CassandraDriver_works()
         {
             if (!TestContext.AppVeyor)
@@ -99,7 +119,7 @@ namespace Evolve.Test.Driver
 
                 try
                 {
-                    Directory.SetCurrentDirectory(TestContext.IntegrationTestCassandraFolder);
+                    Directory.SetCurrentDirectory(TestContext.IntegrationTestFolder);
                     var driver = new CassandraDriver();
                     var cnn = driver.CreateConnection(_cassandraFixture.CnxStr);
                     cnn.Open();

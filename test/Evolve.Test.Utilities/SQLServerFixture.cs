@@ -19,6 +19,8 @@ namespace Evolve.Test.Utilities
         public string DbUser => MsSql.DbUser;
         public string CnxStr => MsSql.CnxStr;
 
+        public string GetCnxStr(string dbName = "master") => CnxStr.Replace("master", dbName);
+
         public void Dispose()
         {
             MsSql.Dispose();

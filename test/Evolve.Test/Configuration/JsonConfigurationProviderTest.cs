@@ -8,7 +8,7 @@ namespace Evolve.Test.Configuration
 {
     public class JsonConfigurationProviderTest
     {
-        [Fact(DisplayName = "Load_json_configuration_file_works")]
+        [Fact]
         public void Load_json_configuration_file_works()
         {
             var evolve = new Evolve(TestContext.JsonConfigPath);
@@ -37,7 +37,7 @@ namespace Evolve.Test.Configuration
             Assert.Equal(200, evolve.CommandTimeout);
         }
 
-        [Fact(DisplayName = "Load_multiple_json_configuration_files_works")]
+        [Fact]
         public void Load_multiple_json_configuration_files_works()
         {
             var evolve = new Evolve(TestContext.Json2ConfigPath, environmentName: "staging");

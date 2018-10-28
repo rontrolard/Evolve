@@ -23,11 +23,6 @@ namespace Evolve.Test
             NetCore20DepsFile = Path.Combine(GetDriverResourcesProjectFolder(NetCore20SupportedDrivers), $"bin/{Configuration}/netcoreapp2.0/{NetCore20SupportedDrivers}.deps.json");
             NetCore21DepsFile = Path.Combine(GetDriverResourcesProjectFolder(NetCore21SupportedDrivers), $"bin/{Configuration}/netcoreapp2.1/{NetCore21SupportedDrivers}.deps.json");
 
-            IntegrationTestPostgreSqlFolder = Path.GetFullPath(Path.Combine(ProjectFolder, $"../../test/Evolve.IntegrationTest.PostgreSQL/bin/{Configuration}"));
-            IntegrationTestMySqlFolder = Path.GetFullPath(Path.Combine(ProjectFolder, $"../../test/Evolve.IntegrationTest.MySQL/bin/{Configuration}"));
-            IntegrationTestMySqlConnectorFolder = Path.GetFullPath(Path.Combine(ProjectFolder, $"../../test-package/Evolve.MySqlConnector.ConsoleApp471.Test/bin/{Configuration}"));
-            IntegrationTestCassandraFolder = Path.GetFullPath(Path.Combine(ProjectFolder, $"../../test/Evolve.IntegrationTest.Cassandra/bin/{Configuration}"));
-
             Environment.SetEnvironmentVariable("EVOLVE_HOST", "127.0.0.1");
             Environment.SetEnvironmentVariable("EVOLVE_DB_USER", "myUsername");
             Environment.SetEnvironmentVariable("EVOLVE_DB_PWD", "myPassword");
@@ -38,10 +33,7 @@ namespace Evolve.Test
         public static string NetCore11DepsFile { get; }
         public static string NetCore20DepsFile { get; }
         public static string NetCore21DepsFile { get; }
-        public static string IntegrationTestPostgreSqlFolder { get; }
-        public static string IntegrationTestMySqlFolder { get; }
-        public static string IntegrationTestMySqlConnectorFolder { get; }
-        public static string IntegrationTestCassandraFolder { get; }
+        public static string IntegrationTestFolder => Path.GetFullPath(Path.Combine(ProjectFolder, $"../../test/Evolve.IntegrationTest/bin/{Configuration}"));
         public static string NugetPackageFolder => $"{EnvHome}/.nuget/packages";
         public static string EnvHome => Environment.GetEnvironmentVariable("USERPROFILE") ?? Environment.GetEnvironmentVariable("HOME");
         public static string ResourcesFolder => Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath), "Resources");

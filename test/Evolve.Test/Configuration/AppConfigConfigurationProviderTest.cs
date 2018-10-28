@@ -9,7 +9,7 @@ namespace Evolve.Test.Configuration
 {
     public class AppConfigConfigurationProviderTest
     {
-        [Fact(DisplayName = "Load_app_configuration_file_works")]
+        [Fact]
         public void Load_app_configuration_file_works()
         {
             var evolve = new Evolve(TestContext.AppConfigPath);
@@ -38,7 +38,7 @@ namespace Evolve.Test.Configuration
             Assert.Equal(100, evolve.CommandTimeout);
         }
 
-        [Fact(DisplayName = "Load_web_configuration_file_works")]
+        [Fact]
         public void Load_web_configuration_file_works()
         {
             var evolve = new Evolve(TestContext.WebConfigPath);

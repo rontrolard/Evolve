@@ -7,7 +7,7 @@ namespace Evolve.Test.Driver
     public partial class NetDriverTest
     {
         [Trait("Category", "Standalone")]
-        [Fact(DisplayName = "CoreMicrosoftDataSqliteDriverForNet_NET_Core_2_0_works")]
+        [Fact]
         public void CoreMicrosoftDataSqliteDriverForNet_NET_Core_2_0_works()
         {
             var driver = new CoreMicrosoftDataSqliteDriverForNet(TestContext.NetCore20DepsFile, TestContext.NugetPackageFolder, msBuildExtensionsPath: null);
@@ -17,7 +17,7 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
-        [Fact(DisplayName = "CoreNpgsqlDriverForNet_NET_Core_2_0_works")]
+        [Fact]
         public void CoreNpgsqlDriverForNet_NET_Core_2_0_works()
         {
             var driver = new CoreNpgsqlDriverForNet(TestContext.NetCore20DepsFile, TestContext.NugetPackageFolder, msBuildExtensionsPath: null);
@@ -27,7 +27,7 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
-        [Fact(DisplayName = "CoreMySqlDriverForNet_NET_Core_2_0_works")]
+        [Fact]
         public void CoreMySqlDriverForNet_NET_Core_2_0_works()
         {
             var driver = new CoreMySqlDataDriverForNet(TestContext.NetCore20DepsFile, TestContext.NugetPackageFolder, msBuildExtensionsPath: null);
@@ -37,7 +37,7 @@ namespace Evolve.Test.Driver
             Assert.True(cnn.State == ConnectionState.Open);
         }
 
-        [Fact(DisplayName = "CoreMySqlConnectorDriverForNet_NET_Core_2_0_works")]
+        [Fact]
         public void CoreMySqlConnectorDriverForNet_NET_Core_2_0_works()
         {
 
@@ -49,7 +49,7 @@ namespace Evolve.Test.Driver
         }
 
         [Trait("Category", "Standalone")]
-        [Fact(DisplayName = "CassandraDriver_NET_Core_2_0_works")]
+        [Fact]
         public void CassandraDriver_NET_Core_2_0_works()
         {
             if (!TestContext.AppVeyor)

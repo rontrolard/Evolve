@@ -9,7 +9,7 @@ configuration: Release
 
 # enable service required for build/tests
 services:
-- postgresql
+- postgresql11
 - mssql2016
 - mysql
 

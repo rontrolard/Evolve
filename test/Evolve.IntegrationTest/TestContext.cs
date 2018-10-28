@@ -36,6 +36,7 @@ namespace Evolve.IntegrationTest
             public static string ResourcesFolder => Path.Combine(ProjectFolder, "PostgreSQL/Resources");
             public static string SqlScriptsFolder => Path.Combine(ResourcesFolder, "Sql_Scripts");
             public static string MigrationFolder => Path.Combine(SqlScriptsFolder, "Migration");
+            public static string Migration11Folder => Path.Combine(SqlScriptsFolder, "Migration11"); // PostgreSQL 11
             public static string ChecksumMismatchFolder => Path.Combine(SqlScriptsFolder, "Checksum_mismatch");
             public static string OutOfOrderFolder => Path.Combine(SqlScriptsFolder, "OutOfOrder");
             public static string EmptyMigrationScriptPath => Path.Combine(ResourcesFolder, "V1_3_2__Migration_description.sql");

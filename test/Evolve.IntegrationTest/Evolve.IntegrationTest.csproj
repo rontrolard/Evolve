@@ -247,7 +247,7 @@
     <Content Include="PostgreSQL\Resources\Sql_Scripts\Migration\V5_0__aggregates.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="PostgreSQL\Resources\Sql_Scripts\Migration\V6_1__procedures.sql">
+    <Content Include="PostgreSQL\Resources\Sql_Scripts\Migration11\V6_1__procedures.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="PostgreSQL\Resources\Sql_Scripts\Migration\V6_0__functions.sql">

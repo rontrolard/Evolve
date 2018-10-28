@@ -37,6 +37,12 @@ namespace Evolve.IntegrationTest.PostgreSQL
 
             int nbMigration = Directory.GetFiles(TestContext.PostgreSQL.MigrationFolder).Length;
 
+            if (!TestContext.AppVeyor)
+            { // Add specific PostgreSQL 11 scripts
+                evolve.Locations = new List<string> { TestContext.PostgreSQL.MigrationFolder, TestContext.PostgreSQL.Migration11Folder };
+                nbMigration = nbMigration + 1;
+            }
+
             // Migrate Sql_Scripts\Migration
             evolve.Migrate();
             Assert.True(evolve.NbMigration == nbMigration, $"{nbMigration} migrations should have been applied, not {evolve.NbMigration}.");
@@ -86,6 +92,7 @@ namespace Evolve.IntegrationTest.PostgreSQL
 
             // Migrate sucessfull after a validation error (MustEraseOnValidationError = true)
             evolve.Locations = new List<string> { TestContext.PostgreSQL.MigrationFolder }; // Migrate Sql_Scripts\Migration
+            nbMigration = Directory.GetFiles(TestContext.PostgreSQL.MigrationFolder).Length;
             evolve.Migrate();
             Assert.True(evolve.NbMigration == nbMigration, $"{nbMigration} migrations should have been applied, not {evolve.NbMigration}.");
             evolve.Locations = new List<string> { TestContext.PostgreSQL.ChecksumMismatchFolder }; // Migrate Sql_Scripts\Checksum_mismatch
